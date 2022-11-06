@@ -1,14 +1,16 @@
 {
-	"name": "com.specter.spritesheet2anim",
-	"displayName": "Specter - Sprite Sheet To FBF Animation",
-	"version": "1.0.0",
-	"unity": "2021.3",
-	"author": "Ken Ken",
-	"description": "Unity sprite sheet to frame by frame animation",
-	"dependencies": {
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/kenlimzx1/specter-spritesheet2anim.git"
-	}
+  "name": "com.specter.spritesheet2anim",
+  "version": "1.0.0",
+  "displayName": "Sprite Sheet To FBF Animation",
+  "description": "Unity sprite sheet to frame by frame animation",
+  "unity": "2021.3",
+  "unityRelease": "11f1",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "author": {
+    "name": "Ken Ken",
+    "email": "kenlimzx1@gmail.com",
+    "url": "https://github.com/kenlimzx1"
+  }
 }
