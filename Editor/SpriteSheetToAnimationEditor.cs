@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -73,7 +74,7 @@ namespace Specter.Editor
             (string savePath, string clipName) = GetNameInfo();
 
 
-            if (selectedTexture == null)
+            if (selectedTexture == null || string.IsNullOrEmpty(savePath))
             {
                 GUI.enabled = false;
                 GUILayout.Button("Generate");
@@ -96,19 +97,19 @@ namespace Specter.Editor
 
         private (string savePath, string clipName) GetNameInfo()
         {
-            string savePath;
-            string clipName;
+            string savePath = "";
+            string clipName = "";
 
             if (isReplacingName)
                 clipName = updatedName;
-            else
+            else if (selectedTexture != null)
                 clipName = selectedTexture.name;
 
             if (!useSaveInsideSameFolder)
             {
-                savePath = customSavePath;
+                savePath = $"Assets/{customSavePath}";
             }
-            else
+            else if (selectedTexture != null)
             {
                 savePath = AssetDatabase.GetAssetPath(selectedTexture);
                 savePath = savePath.Remove(savePath.LastIndexOf('/'), savePath.Length - savePath.LastIndexOf('/'));
@@ -153,6 +154,12 @@ namespace Specter.Editor
             }
 
             string assetSavePath = $"{savePath}/{clipName}.anim";
+
+            if (!Directory.Exists(savePath))
+            {
+                Directory.CreateDirectory(savePath);
+                AssetDatabase.Refresh();
+            }
 
             AssetDatabase.CreateAsset(clip, assetSavePath);
             AssetDatabase.SaveAssets();
