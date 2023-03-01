@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Specter.Editor
+namespace MiniJasmine.Editor
 {
     public enum SpriteSheetToFBFAnimationExportMode
     {
@@ -17,7 +17,7 @@ namespace Specter.Editor
 
     public class SpriteSheetToAnimationEditor : EditorWindow
     {
-        [MenuItem("Specter/Sprite Sheet To FBF Animation")]
+        [MenuItem("MiniJasmine/Sprite Sheet To FBF Animation")]
         private static void OpenSpriteSheetToAnimationWindow()
         {
             var window = GetWindow<SpriteSheetToAnimationEditor>("Sprite Sheet To FBF Animation");
